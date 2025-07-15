@@ -1,9 +1,14 @@
 {
   "NAV": {
-    "HOME": "Home",
+    "MOVIES": "Movies",
+    "TV": "TV Shows",
+    "RECENT": "Recently Added",
+    "SEARCH": "Search...",
     "LANG": {
+      "LABEL": "Language",
       "EN": "English",
       "AR": "Arabic"
-    }
+    },
+    "MODE": "Theme"
   }
 }
