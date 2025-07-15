@@ -69,50 +69,29 @@ export class MoviesService {
   }
 
   getRecommendedMovies(movieId: number, page: number = 1): Observable<RecommendedMoviesResponse> {
-    return this._HttpClient.get<RecommendedMoviesResponse>(
-      `${baseUrl}/movie/${movieId}/recommendations?page=${page}`
-    );
+    return this._HttpClient.get<RecommendedMoviesResponse>(`${baseUrl}/movie/${movieId}/recommendations?page=${page}`);
   }
 
   getMovieReleaseDates(movieId: number): Observable<ReleaseDatesResponse> {
-    return this._HttpClient.get<ReleaseDatesResponse>(
-      `${baseUrl}/movie/${movieId}/release_dates`
-    );
+    return this._HttpClient.get<ReleaseDatesResponse>(`${baseUrl}/movie/${movieId}/release_dates`);
   }
 
   getMovieReviews(movieId: number, page: number = 1): Observable<MovieReviewsResponse> {
-    return this._HttpClient.get<MovieReviewsResponse>(
-      `${baseUrl}/movie/${movieId}/reviews?page=${page}`
-    );
+    return this._HttpClient.get<MovieReviewsResponse>(`${baseUrl}/movie/${movieId}/reviews?page=${page}`);
   }
 
   getSimilarMovies(movieId: number, page: number = 1): Observable<SimilarMoviesResponse> {
-    return this._HttpClient.get<SimilarMoviesResponse>(
-      `${baseUrl}/movie/${movieId}/similar?page=${page}`
-    );
+    return this._HttpClient.get<SimilarMoviesResponse>(`${baseUrl}/movie/${movieId}/similar?page=${page}`);
   }
 
   getMovieVideos(movieId: number): Observable<MovieVideosResponse> {
-    return this._HttpClient.get<MovieVideosResponse>(
-      `${baseUrl}/movie/${movieId}/videos`
-    );
+    return this._HttpClient.get<MovieVideosResponse>(`${baseUrl}/movie/${movieId}/videos`);
   }
 
   searchMovies(query: string, page: number = 1): Observable<SearchMoviesResponse> {
     return this._HttpClient.get<SearchMoviesResponse>(`${baseUrl}/search/movie`, {
-      params: {
-        query,
-        page,
-        language: 'en-US',
-      }
+      params: { query, page }
     });
   }
-  
-
-
-
-
-
-
 
 }

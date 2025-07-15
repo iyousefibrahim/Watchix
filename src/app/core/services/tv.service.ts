@@ -40,37 +40,24 @@ export class TVService {
 
   searchTvShows(query: string, page: number = 1): Observable<SearchTvShowsResponse> {
     return this._HttpClient.get<SearchTvShowsResponse>(`${baseUrl}/search/tv`, {
-      params: {
-        query,
-        page,
-        include_adult: false,
-        language: 'en-US',
-      }
+      params: { query, page, include_adult: false }
     });
   }
 
   getAiringTodayTV(page: number = 1): Observable<AiringTodayTVResponse> {
-    return this._HttpClient.get<AiringTodayTVResponse>(
-      `${baseUrl}/tv/airing_today?page=${page}`
-    );
+    return this._HttpClient.get<AiringTodayTVResponse>(`${baseUrl}/tv/airing_today?page=${page}`);
   }
 
   getOnTheAirTV(page: number = 1): Observable<AiringTodayTVResponse> {
-    return this._HttpClient.get<AiringTodayTVResponse>(
-      `${baseUrl}/tv/on_the_air?page=${page}`
-    );
+    return this._HttpClient.get<AiringTodayTVResponse>(`${baseUrl}/tv/on_the_air?page=${page}`);
   }
 
   getPopularTV(page: number = 1): Observable<AiringTodayTVResponse> {
-    return this._HttpClient.get<AiringTodayTVResponse>(
-      `${baseUrl}/tv/popular?page=${page}`
-    );
+    return this._HttpClient.get<AiringTodayTVResponse>(`${baseUrl}/tv/popular?page=${page}`);
   }
 
   getTopRatedTV(page: number = 1): Observable<AiringTodayTVResponse> {
-    return this._HttpClient.get<AiringTodayTVResponse>(
-      `${baseUrl}/tv/top_rated?page=${page}`
-    );
+    return this._HttpClient.get<AiringTodayTVResponse>(`${baseUrl}/tv/top_rated?page=${page}`);
   }
 
   getTVDetails(series_id: number): Observable<TVDetails> {
@@ -86,9 +73,7 @@ export class TVService {
   }
 
   getTvKeywords(seriesId: number): Observable<TvKeywordsResponse> {
-    return this._HttpClient.get<TvKeywordsResponse>(
-      `${baseUrl}/tv/${seriesId}/keywords`
-    );
+    return this._HttpClient.get<TvKeywordsResponse>(`${baseUrl}/tv/${seriesId}/keywords`);
   }
 
   getLatestTvShow(): Observable<LatestTvShow> {
@@ -97,112 +82,60 @@ export class TVService {
 
   getTvRecommendations(seriesId: number, page: number = 1): Observable<TvRecommendationsResponse> {
     return this._HttpClient.get<TvRecommendationsResponse>(`${baseUrl}/tv/${seriesId}/recommendations`, {
-      params: {
-        language: 'en-US',
-        page: page.toString()
-      }
+      params: { page }
     });
   }
 
   getTvReviews(seriesId: number, page: number = 1): Observable<TvReviewsResponse> {
     return this._HttpClient.get<TvReviewsResponse>(`${baseUrl}/tv/${seriesId}/reviews`, {
-      params: {
-        language: 'en-US',
-        page: page.toString()
-      }
+      params: { page }
     });
   }
 
   getSimilarTvShows(seriesId: number, page: number = 1): Observable<SimilarTvResponse> {
     return this._HttpClient.get<SimilarTvResponse>(`${baseUrl}/tv/${seriesId}/similar`, {
-      params: {
-        language: 'en-US',
-        page: page.toString()
-      }
+      params: { page }
     });
   }
 
   getTvVideos(seriesId: number): Observable<TvVideosResponse> {
-    return this._HttpClient.get<TvVideosResponse>(`${baseUrl}/tv/${seriesId}/videos`, {
-      params: {
-        language: 'en-US'
-      }
-    });
+    return this._HttpClient.get<TvVideosResponse>(`${baseUrl}/tv/${seriesId}/videos`);
   }
 
   getTvSeasonDetails(seriesId: number, seasonNumber: number): Observable<TvSeasonDetails> {
-    return this._HttpClient.get<TvSeasonDetails>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}`, {
-      params: {
-        language: 'en-US'
-      }
-    });
+    return this._HttpClient.get<TvSeasonDetails>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}`);
   }
 
   getTvSeasonImages(seriesId: number, seasonNumber: number): Observable<TvSeasonImages> {
     return this._HttpClient.get<TvSeasonImages>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}/images`, {
-      params: {
-        language: 'en-US',
-        include_image_language: 'en,null'
-      }
+      params: { include_image_language: 'en,null' }
     });
   }
 
   getTvSeasonVideos(seriesId: number, seasonNumber: number): Observable<TvSeasonVideos> {
     return this._HttpClient.get<TvSeasonVideos>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}/videos`, {
-      params: {
-        language: 'en-US',
-        include_video_language: 'en,null'
-      }
+      params: { include_video_language: 'en,null' }
     });
   }
 
   getEpisodeDetails(seriesId: number, seasonNumber: number, episodeNumber: number): Observable<TvEpisodeDetails> {
-    return this._HttpClient.get<TvEpisodeDetails>(
-      `${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}`,
-      {
-        params: {
-          language: 'en-US',
-        },
-      }
-    );
+    return this._HttpClient.get<TvEpisodeDetails>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}`);
   }
 
   getEpisodeCredits(seriesId: number, seasonNumber: number, episodeNumber: number): Observable<TvEpisodeCredits> {
-    return this._HttpClient.get<TvEpisodeCredits>(
-      `${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/credits`,
-      {
-        params: {
-          language: 'en-US',
-        },
-      }
-    );
+    return this._HttpClient.get<TvEpisodeCredits>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/credits`);
   }
 
   getEpisodeImages(seriesId: number, seasonNumber: number, episodeNumber: number): Observable<TvEpisodeImages> {
-    return this._HttpClient.get<TvEpisodeImages>(
-      `${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/images`,
-      {
-        params: {
-          language: 'en-US',
-          include_image_language: 'en,null',
-        },
-      }
-    );
+    return this._HttpClient.get<TvEpisodeImages>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/images`, {
+      params: { include_image_language: 'en,null' }
+    });
   }
 
   getEpisodeVideos(seriesId: number, seasonNumber: number, episodeNumber: number): Observable<TvEpisodeVideos> {
-    return this._HttpClient.get<TvEpisodeVideos>(
-      `${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/videos`,
-      {
-        params: {
-          language: 'en-US',
-          include_video_language: 'en,null',
-        },
-      }
-    );
+    return this._HttpClient.get<TvEpisodeVideos>(`${baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/videos`, {
+      params: { include_video_language: 'en,null' }
+    });
   }
-
-
-
 
 }
