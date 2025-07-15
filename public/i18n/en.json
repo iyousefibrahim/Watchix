@@ -1,6 +1,9 @@
 {
-  "HOME": {
-    "TITLE": "Welcome",
-    "DESCRIPTION": "This is the home page"
+  "NAV": {
+    "HOME": "Home",
+    "LANG": {
+      "EN": "English",
+      "AR": "Arabic"
+    }
   }
 }

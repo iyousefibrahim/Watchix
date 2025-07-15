@@ -12,7 +12,7 @@ export class TranslationService {
     let savedLanguage = localStorage.getItem('lang') || "en|US";
 
     // Default Language
-    this._TranslateService.setDefaultLang('en|US');
+    this._TranslateService.setDefaultLang('en');
 
     // Use Lang in localstorage
     this._TranslateService.use(savedLanguage);
@@ -23,9 +23,9 @@ export class TranslationService {
   }
 
   changeDirection(): void {
-    let savedLanguage = localStorage.getItem('lang') || "en|US";
+    let savedLanguage = localStorage.getItem('lang') || "en";
     // Change Direction
-    if (savedLanguage === 'en|US') {
+    if (savedLanguage === 'en') {
       // ltr
       document.documentElement.dir = 'ltr';
     } else {

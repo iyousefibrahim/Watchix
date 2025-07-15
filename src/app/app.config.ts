@@ -10,7 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './public/i18n/', '.json');
+  return new TranslateHttpLoader(http, '/i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Aura,
         options: {
-          darkModeSelector: '.dark'
+          darkModeSelector: true
         }
       }
     }),
@@ -32,7 +32,7 @@ export const appConfig: ApplicationConfig = {
     ),
     importProvidersFrom([
       TranslateModule.forRoot({
-        defaultLanguage: 'en|US',
+        defaultLanguage: 'en',
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
