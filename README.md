@@ -1,59 +1,46 @@
 # Watchix
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Watchix is a modern movies & TV shows platform built with Angular v19 and powered by The Movie Database (TMDB) API. The app features a fully responsive UI, language support, reusable components, clean state management with Angular Signals, and performance optimizations — all wrapped in a sleek interface using daisyUI and Tailwind CSS.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+### 🔧 Core Functionality
+- Browse **Trending**, **Popular**, **Top Rated**, **Upcoming**, and **Latest** Movies & TV Shows.
+- Multilingual support (**English / Arabic**) using `ngx-translate`.
+- Search functionality with instant results.
+- View trailers using embedded YouTube videos.
+- Smooth page navigation with **routing** and **lazy loading**.
 
-```bash
-ng serve
-```
+### 🎨 UI/UX
+- Built using **Angular v19** + **daisyUI** + **Tailwind CSS**.
+- Responsive design with dark mode support.
+- Skeleton loaders for smooth content loading.
+- Modular & reusable UI components.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 🌍 Internationalization (i18n)
+- Language switcher with instant toggle using `ngx-translate`.
+- Interceptor-based automatic `language` query param injection for TMDB API.
 
-## Code scaffolding
+### 🧠 Angular Signals
+- Used `@angular/core` Signals for state management instead of traditional services.
+- Input Signals (`input()`) used for better component communication.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 🛠 Interceptors
+- Global language interceptor to dynamically inject the `language` param into each request.
 
-```bash
-ng generate component component-name
-```
+## 🧪 Technologies Used
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 🖥 Frontend
+- Angular v19
+- Angular Signals + Input Signals
+- Tailwind CSS + daisyUI
+- ngx-translate (for i18n)
+- TMDB API
 
-```bash
-ng generate --help
-```
+## 📌 Notes
 
-## Building
+- All data is fetched from the public TMDB API.
+- Trailers are embedded via YouTube; fallback to poster if not available.
+- Language-aware data is fetched using TMDB’s `language` query param.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
