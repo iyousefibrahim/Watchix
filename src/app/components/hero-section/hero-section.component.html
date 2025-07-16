@@ -34,15 +34,16 @@
 
                 </div>
 
-                <app-button (click)="trailerisOpend.set(true)" title="HOME.WATCH"></app-button>
+                <app-button (click)="openTrailer()" title="HOME.WATCH"></app-button>
 
                 @if(trailerisOpend()){
-                <div (click)="trailerisOpend.set(false)"
+                <div (click)="closeTrailer()"
                     class="absolute left-0 right-0 top-0 bottom-0 bg-black/60 flex justify-center items-center">
                     <iframe class="mt-4 rounded-lg" width="560" height="315" [src]="safeTrailerUrl()" frameborder="0"
                         allowfullscreen></iframe>
                 </div>
                 }
+
             </div>
         </div>
 

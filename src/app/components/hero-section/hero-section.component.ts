@@ -56,5 +56,16 @@ export class HeroSectionComponent implements OnInit {
       }
     });
   }
-  
+
+  closeTrailer(): void {
+    this.trailerisOpend.set(false);
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  openTrailer(): void {
+    this.trailerisOpend.set(true);
+    document.body.classList.add('overflow-hidden');
+  }
+
+
 }
