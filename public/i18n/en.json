@@ -13,5 +13,10 @@
   },
   "HOME": {
     "WATCH": "Watch Now!"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Page Not Found",
+    "DESCRIPTION": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "GO_HOME": "Go Home"
   }
 }

@@ -1,0 +1,17 @@
+<section class="h-screen w-full flex flex-col justify-center items-center bg-base-100 text-center px-4">
+  <h1 class="text-6xl font-bold text-red-600">404</h1>
+  <h2 class="text-2xl font-semibold mt-4 text-neutral-content">
+    {{ 'NOT_FOUND.TITLE' | translate }}
+  </h2>
+  <p class="mt-2 text-sm text-gray-500 max-w-md">
+    {{ 'NOT_FOUND.DESCRIPTION' | translate }}
+  </p>
+
+  <div class="mt-6">
+    <app-button
+      title="NOT_FOUND.GO_HOME"
+      routerLink="/home"
+      textColorClass="text-white"
+    ></app-button>
+  </div>
+</section>
