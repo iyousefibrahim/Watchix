@@ -6,6 +6,7 @@ import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@ang
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { langInterceptor } from './core/interceptors/lang.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/i18n/', '.json');
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(
       withFetch(),
-      withInterceptors([authInterceptor])
+      withInterceptors([authInterceptor, langInterceptor])
     ),
     importProvidersFrom([
       TranslateModule.forRoot({

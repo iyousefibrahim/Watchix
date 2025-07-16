@@ -1,18 +1,42 @@
-<div class="card bg-base-100 w-96 shadow-sm">
-  <figure>
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes" />
-  </figure>
-  <div class="card-body">
-    <h2 class="card-title">
-      Card Title
-      <div class="badge badge-secondary">NEW</div>
-    </h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    <div class="card-actions justify-end">
-      <div class="badge badge-outline">Fashion</div>
-      <div class="badge badge-outline">Products</div>
+<div class="flex flex-row flex-wrap justify-between gap-4">
+  @for (movie of items(); track movie.id) {
+  <div routerLink="" class="card xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md hover:shadow-lg transition-shadow duration-300">
+
+    <figure class="rounded-t-lg overflow-hidden">
+      <img class="h-auto w-full  bg-contain" src="{{ imagePath + movie.poster_path }}"
+        alt="{{ movie.title || movie.name }}" />
+    </figure>
+
+    <div class="card-body p-4">
+      <h2 class="card-title text-lg font-semibold truncate">
+        {{ movie.title || movie.name }}
+      </h2>
+
+      <p class="text-sm text-gray-500 line-clamp-3">
+        {{ movie.overview }}
+      </p>
+
+      <div class="card-actions justify-between mt-2 text-sm text-gray-400">
+        <span class="badge badge-outline">
+          {{ movie.release_date | date:'yyyy' }}
+        </span>
+      </div>
     </div>
+
   </div>
+  }@empty {
+  <div class="flex flex-wrap gap-4">
+    @for (item of skeletonArray; track $index) {
+    <div class="card w-60 bg-base-200 shadow-md">
+      <div class="skeleton h-80 w-full rounded-t-lg"></div>
+      <div class="p-4 space-y-2">
+        <div class="skeleton h-5 w-3/4"></div>
+        <div class="skeleton h-4 w-full"></div>
+        <div class="skeleton h-4 w-5/6"></div>
+        <div class="skeleton h-4 w-2/3 mt-2"></div>
+      </div>
+    </div>
+    }
+  </div>
+  }
 </div>

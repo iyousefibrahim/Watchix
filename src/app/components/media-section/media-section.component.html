@@ -1,5 +1,4 @@
-<h1 class="text-5xl">{{title()}}</h1>
-<div class="flex justify-between">
-    <app-media-card title="hello world" [items]="items"></app-media-card>
-
+<div class="my-container">
+    <h1 class="text-5xl my-10">{{title() | translate}}</h1>
+    <app-media-card [items]="items"></app-media-card>
 </div>

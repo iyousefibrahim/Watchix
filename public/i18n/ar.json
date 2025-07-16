@@ -34,5 +34,21 @@
       "YOUTUBE": "يوتيوب"
     },
     "RIGHTS": "جميع الحقوق محفوظة."
+  },
+  "MEDIA_SECTIONS": {
+    "TRENDING_MOVIES": "أفلام رائجة",
+    "TRENDING_TV": "مسلسلات رائجة",
+    "POPULAR_MOVIES": "الأفلام الشائعة",
+    "POPULAR_TV": "المسلسلات الشائعة",
+    "GENRES_MOVIES": "أنواع الأفلام",
+    "GENRES_TV": "أنواع المسلسلات",
+    "UPCOMING_MOVIES": "الأفلام القادمة",
+    "UPCOMING_TV": "المسلسلات القادمة",
+    "TOP_RATED_MOVIES": "أفضل الأفلام تقييمًا",
+    "TOP_RATED_TV": "أفضل المسلسلات تقييمًا",
+    "LATEST_MOVIES": "أحدث الأفلام",
+    "LATEST_TV": "أحدث المسلسلات",
+    "RECOMMENDED_MOVIES": "أفلام مقترحة",
+    "RECOMMENDED_TV": "مسلسلات مقترحة"
   }
 }

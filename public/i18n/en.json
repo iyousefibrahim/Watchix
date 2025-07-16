@@ -34,5 +34,21 @@
       "YOUTUBE": "YouTube"
     },
     "RIGHTS": "All rights reserved."
+  },
+  "MEDIA_SECTIONS": {
+    "TRENDING_MOVIES": "Trending Movies",
+    "TRENDING_TV": "Trending TV Shows",
+    "POPULAR_MOVIES": "Popular Movies",
+    "POPULAR_TV": "Popular TV Shows",
+    "GENRES_MOVIES": "Movie Genres",
+    "GENRES_TV": "TV Show Genres",
+    "UPCOMING_MOVIES": "Upcoming Movies",
+    "UPCOMING_TV": "Upcoming TV Shows",
+    "TOP_RATED_MOVIES": "Top Rated Movies",
+    "TOP_RATED_TV": "Top Rated TV Shows",
+    "LATEST_MOVIES": "Latest Movies",
+    "LATEST_TV": "Latest TV Shows",
+    "RECOMMENDED_MOVIES": "Recommended Movies",
+    "RECOMMENDED_TV": "Recommended TV Shows"
   }
 }

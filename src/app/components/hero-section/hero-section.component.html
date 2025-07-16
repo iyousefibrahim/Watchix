@@ -1,27 +1,27 @@
 <div *ngIf="randomMovie() as movie">
-    <header class="relative h-screen text-white bg-cover bg-center "
+    <header class="relative h-screen text-white bg-cover bg-center"
         [style.backgroundImage]="`url(${imagePath}${movie.backdrop_path})`">
 
         <div class="absolute inset-0 bg-black/60 z-0"></div>
 
-        <div class="relative z-10 h-full w-full flex items-center my-container ">
-            <div class="gap-y-4 flex flex-col">
-                <h1 class="text-5xl font-bold">{{ movie.title }}</h1>
+        <div class="relative z-10 h-full w-full flex items-center my-container">
+            <div class="gap-y-5 flex flex-col">
+                <h1 class="text-5xl mb-3 font-bold">{{ movie.title }}</h1>
                 <p class="max-w-xl">{{ movie.overview }}</p>
-                <!-- Movie metadata -->
+
                 <div class="flex flex-wrap items-center gap-4 text-sm text-gray-300">
-                    @if(movie.release_date){
+                    @if (movie.release_date) {
                     <span class="flex items-center gap-1">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clip-rule="evenodd"></path>
+                                clip-rule="evenodd" />
                         </svg>
                         {{ movie.release_date | date:'yyyy' }}
                     </span>
                     }
 
-                    @if(movie.vote_average){
+                    @if (movie.vote_average) {
                     <span class="flex items-center gap-1">
                         <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                             <path
@@ -31,18 +31,26 @@
                         {{ movie.vote_average | number:'1.1-1' }}
                     </span>
                     }
-
                 </div>
 
                 <app-button (click)="openTrailer()" title="HOME.WATCH"></app-button>
 
-                @if(trailerisOpend()){
-                <div (click)="closeTrailer()"
-                    class="absolute left-0 right-0 top-0 bottom-0 bg-black/60 flex justify-center items-center">
+                @if(trailerisOpend()) {
+                <div (click)="closeTrailer()" class="fixed inset-0 bg-black/60 z-50 flex justify-center items-center">
+
+                    @if(safeTrailerUrl()) {
                     <iframe class="mt-4 rounded-lg" width="560" height="315" [src]="safeTrailerUrl()" frameborder="0"
                         allowfullscreen></iframe>
+                    } @else {
+                    <div class="flex justify-center items-center h-full w-full">
+                        <img [src]="imagePath + randomMovie()?.poster_path" alt="Poster"
+                            class="rounded-lg max-h-[80vh] shadow-lg object-contain" />
+                    </div>
+                    }
+
                 </div>
                 }
+
 
             </div>
         </div>

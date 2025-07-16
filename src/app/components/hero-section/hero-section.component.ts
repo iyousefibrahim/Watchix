@@ -18,11 +18,10 @@ export class HeroSectionComponent implements OnInit {
   private readonly sanitizer = inject(DomSanitizer);
 
   imagePath = imagePath;
-
   randomMovie = signal<MovieListItem | null>(null);
   movieId = signal<number | null>(null);
   safeTrailerUrl = signal<SafeResourceUrl | null>(null);
-  trailerisOpend = signal<Boolean>(false);
+  trailerisOpend = signal<boolean>(false);
 
   ngOnInit(): void {
     this._MoviesService.getPopularMovies()
@@ -42,16 +41,14 @@ export class HeroSectionComponent implements OnInit {
   loadTrailer(id: number): void {
     this._MoviesService.getMovieVideos(id).subscribe({
       next: (res) => {
-        const trailers = res.results.filter(
-          v => v.type === 'Trailer' && v.site === 'YouTube'
-        );
-
-        if (trailers.length > 0) {
-          const trailerKey = trailers[0].key;
-          const url = `https://www.youtube.com/embed/${trailerKey}`;
+        const video = res.results.find(v => v.site === 'YouTube');
+        if (video) {
+          const url = `https://www.youtube.com/embed/${video.key}`;
           this.safeTrailerUrl.set(
             this.sanitizer.bypassSecurityTrustResourceUrl(url)
           );
+        } else {
+          this.safeTrailerUrl.set(null);
         }
       }
     });
@@ -65,7 +62,6 @@ export class HeroSectionComponent implements OnInit {
   openTrailer(): void {
     this.trailerisOpend.set(true);
     document.body.classList.add('overflow-hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-
 }
