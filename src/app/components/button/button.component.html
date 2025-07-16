@@ -1,0 +1,13 @@
+<button [disabled]="disabledStatus()" [routerLink]="routerLink() !== '' ? routerLink() : null"
+    [ngClass]="[textColorClass(), bgColor()]" [ngStyle]="{
+    'width': buttonWidth(),
+    'padding': buttonPadding()
+  }"
+    class="flex cursor-pointer disabled:bg-neutral-600 disabled:cursor-not-allowed items-center justify-center px-14 rounded-[10px] gap-x-0.5">
+
+    {{ title() | translate }}
+
+    @if (imageSrc()) {
+    <img [src]="imageSrc()" alt="Arrow Image">
+    }
+</button>
