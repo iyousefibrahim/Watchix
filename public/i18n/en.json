@@ -18,5 +18,21 @@
     "TITLE": "Page Not Found",
     "DESCRIPTION": "Sorry, the page you're looking for doesn't exist or has been moved.",
     "GO_HOME": "Go Home"
+  },
+  "FOOTER": {
+    "DESCRIPTION": "The best platform to watch the latest movies and TV shows in high quality.",
+    "LINKS": {
+      "TITLE": "Quick Links",
+      "MOVIES": "Movies",
+      "TV": "TV Shows",
+      "RECENT": "Recently Added"
+    },
+    "SOCIAL": {
+      "TITLE": "Follow Us",
+      "FACEBOOK": "Facebook",
+      "INSTAGRAM": "Instagram",
+      "YOUTUBE": "YouTube"
+    },
+    "RIGHTS": "All rights reserved."
   }
 }
