@@ -1,10 +1,10 @@
 <div *ngIf="randomMovie() as movie">
-    <header class="relative h-screen text-white bg-cover bg-center my-container"
+    <header class="relative h-screen text-white bg-cover bg-center "
         [style.backgroundImage]="`url(${imagePath}${movie.backdrop_path})`">
 
         <div class="absolute inset-0 bg-black/60 z-0"></div>
 
-        <div class="relative z-10 h-full w-full flex items-center ">
+        <div class="relative z-10 h-full w-full flex items-center my-container ">
             <div class="gap-y-4 flex flex-col">
                 <h1 class="text-5xl font-bold">{{ movie.title }}</h1>
                 <p class="max-w-xl">{{ movie.overview }}</p>
