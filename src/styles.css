@@ -11,9 +11,8 @@ body {
   font-family: 'Cairo', sans-serif;
 }
 
-@layer components {
-  .my-container {
-    @apply container mx-auto px-4;
-  }
+.my-container {
+  max-width: 100vw;
+  padding-inline: calc(var(--spacing) * 20);
+  margin-inline: auto;
 }
-

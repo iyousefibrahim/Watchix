@@ -15,7 +15,7 @@ export class ButtonComponent {
   buttonWidth = input<string>('auto');
   buttonPadding = input<string>('12px 24px');
   imageSrc = input<string>('');
-  bgColor = input<string>('bg-red-600');
+  bgColor = input<string>('bg-red-700');
   routerLink = input<string>(''); 
   disabledStatus = input<boolean>(false);
 }
