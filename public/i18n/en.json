@@ -9,9 +9,9 @@
       "EN": "English",
       "AR": "Arabic"
     },
-    "MODE": "Theme"
+    "THEME": "Theme"
   },
   "HOME": {
-    "BUTTON": "Watch Now!"
+    "WATCH": "Watch Now!"
   }
 }

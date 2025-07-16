@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { imagePath } from '../../shared/utils/imagePath';
 import { ButtonComponent } from "../button/button.component";
 import { take } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hero-section',
@@ -14,10 +15,14 @@ import { take } from 'rxjs';
 })
 export class HeroSectionComponent implements OnInit {
   private readonly _MoviesService = inject(MoviesService);
+  private readonly sanitizer = inject(DomSanitizer);
+
   imagePath = imagePath;
 
   randomMovie = signal<MovieListItem | null>(null);
-  movieId = signal<number>(0);
+  movieId = signal<number | null>(null);
+  safeTrailerUrl = signal<SafeResourceUrl | null>(null);
+  trailerisOpend = signal<Boolean>(false);
 
   ngOnInit(): void {
     this._MoviesService.getPopularMovies()
@@ -30,15 +35,26 @@ export class HeroSectionComponent implements OnInit {
         this.randomMovie.set(selectedMovie);
         this.movieId.set(selectedMovie.id);
 
-        this._MoviesService.getMovieVideos(this.movieId()).subscribe({
-          next: (res) => {
-            console.log('🎬 Movie videos:', res);
-          },
-          error: (err) => {
-            console.log('❌ Error fetching videos:', err);
-          }
-        });
+        this.loadTrailer(selectedMovie.id);
       });
   }
 
+  loadTrailer(id: number): void {
+    this._MoviesService.getMovieVideos(id).subscribe({
+      next: (res) => {
+        const trailers = res.results.filter(
+          v => v.type === 'Trailer' && v.site === 'YouTube'
+        );
+
+        if (trailers.length > 0) {
+          const trailerKey = trailers[0].key;
+          const url = `https://www.youtube.com/embed/${trailerKey}`;
+          this.safeTrailerUrl.set(
+            this.sanitizer.bypassSecurityTrustResourceUrl(url)
+          );
+        }
+      }
+    });
+  }
+  
 }
