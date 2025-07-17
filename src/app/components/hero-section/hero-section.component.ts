@@ -1,11 +1,12 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { MoviesService } from '../../core/services/movies.service';
 import { MovieListItem } from '../../core/interfaces/responses/movie-list-response';
 import { CommonModule } from '@angular/common';
 import { imagePath } from '../../shared/utils/imagePath';
 import { ButtonComponent } from "../button/button.component";
-import { take } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TranslationService } from '../../core/services/translation.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-hero-section',
@@ -15,7 +16,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class HeroSectionComponent implements OnInit {
   private readonly _MoviesService = inject(MoviesService);
-  private readonly sanitizer = inject(DomSanitizer);
+  private readonly _sanitizer = inject(DomSanitizer);
+  private readonly _TranslationService = inject(TranslationService);
+  private readonly _destroyRef = inject(DestroyRef);
 
   imagePath = imagePath;
   randomMovie = signal<MovieListItem | null>(null);
@@ -24,8 +27,17 @@ export class HeroSectionComponent implements OnInit {
   trailerisOpend = signal<boolean>(false);
 
   ngOnInit(): void {
+    this.loadRandomMovieAndTrailer();
+
+    this._TranslationService.languageChanged$
+      .pipe(takeUntilDestroyed(this._destroyRef))
+      .subscribe(() => {
+        this.loadRandomMovieAndTrailer();
+      });
+  }
+
+  private loadRandomMovieAndTrailer(): void {
     this._MoviesService.getPopularMovies()
-      .pipe(take(1))
       .subscribe((res) => {
         const movies = res.results;
         const index = Math.floor(Math.random() * movies.length);
@@ -38,14 +50,14 @@ export class HeroSectionComponent implements OnInit {
       });
   }
 
-  loadTrailer(id: number): void {
+  private loadTrailer(id: number): void {
     this._MoviesService.getMovieVideos(id).subscribe({
       next: (res) => {
         const video = res.results.find(v => v.site === 'YouTube');
         if (video) {
           const url = `https://www.youtube.com/embed/${video.key}`;
           this.safeTrailerUrl.set(
-            this.sanitizer.bypassSecurityTrustResourceUrl(url)
+            this._sanitizer.bypassSecurityTrustResourceUrl(url)
           );
         } else {
           this.safeTrailerUrl.set(null);
