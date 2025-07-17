@@ -1,0 +1,16 @@
+@if (hasTrailer()) {
+<app-button (click)="openTrailer()" title="TRAILER.WATCH" text="Watch Trailer"></app-button>
+} @else {
+<p class="text-gray-400 italic">No trailer available</p>
+}
+
+@if (trailerisOpend()) {
+<div (click)="closeTrailer()" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
+    <div class="relative w-full max-w-4xl aspect-video">
+        <iframe class="w-full h-full rounded-lg" [src]="safeTrailerUrl()" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+        <button class="absolute top-2 -right-16 bg-white text-black px-4 cursor-pointer py-3 rounded-full" (click)="closeTrailer()">✖</button>
+    </div>
+</div>
+}

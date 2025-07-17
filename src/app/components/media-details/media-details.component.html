@@ -1,0 +1,6 @@
+@if(mediaType() === 'movie'){
+<app-movie-details [Id]="mediaId()" />
+}
+@else {
+<app-tv-details [Id]="mediaId()" />
+}

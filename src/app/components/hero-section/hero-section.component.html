@@ -32,24 +32,7 @@
                     </span>
                     }
                 </div>
-
-                <app-button (click)="openTrailer()" title="HOME.WATCH"></app-button>
-
-                @if(trailerisOpend()) {
-                <div (click)="closeTrailer()" class="fixed inset-0 bg-black/60 z-50 flex justify-center items-center">
-
-                    @if(safeTrailerUrl()) {
-                    <iframe class="mt-4 rounded-lg" width="560" height="315" [src]="safeTrailerUrl()" frameborder="0"
-                        allowfullscreen></iframe>
-                    } @else {
-                    <div class="flex justify-center items-center h-full w-full">
-                        <img [src]="imagePath + randomMovie()?.poster_path" alt="Poster"
-                            class="rounded-lg max-h-[80vh] shadow-lg object-contain" />
-                    </div>
-                    }
-
-                </div>
-                }
+                <app-watch-trailer [Id]="trailerId" mediaType="movie"></app-watch-trailer>
 
 
             </div>

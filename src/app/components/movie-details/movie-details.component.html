@@ -1,0 +1,66 @@
+@if (movieDetails(); as details) {
+<!-- Hero Section with Backdrop -->
+<div class="hero min-h-screen bg-base-200"
+    [style.background-image]="'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(' + imagePath + details.backdrop_path + ')'">
+    <div class="hero-content flex-col lg:flex-row gap-8 p-8">
+        <!-- Poster -->
+        <div class="flex-shrink-0">
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img [src]="imagePath + details.poster_path" [alt]="details.title" class="w-80 h-auto rounded-lg" />
+                </figure>
+            </div>
+        </div>
+
+        <!-- Main Info -->
+        <div class="flex-1 text-white">
+            <h1 class="text-5xl font-bold mb-4">{{ details.title }}</h1>
+
+            @if (details.tagline) {
+            <p class="text-xl italic text-gray-300">{{ details.tagline }}</p>
+            }
+            <p class="text-base-content/80 my-4 leading-relaxed">{{ details.overview }}</p>
+
+            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-4 mb-6">
+                <div class="badge badge-primary badge-lg">
+                    {{ details.release_date | date:'yyyy' }}
+                </div>
+
+                @if (details.runtime) {
+                <div class="badge badge-secondary badge-lg">{{ details.runtime }} min</div>
+                }
+
+
+                <span class="badge badge-secondary uppercase">{{ details.original_language }}</span>
+                <div class="badge badge-accent badge-lg">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    {{ details.vote_average | number:'1.1-1' }}/10
+                </div>
+            </div>
+
+
+            <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
+                @for (genre of details.genres; track genre.id) {
+                <span class="badge badge-outline badge-lg">{{ genre.name }}</span>
+                }
+            </div>
+
+            <app-watch-trailer [Id]="details.id" mediaType="movie"></app-watch-trailer>
+        </div>
+    </div>
+</div>
+
+} @else {
+<!-- Loading State -->
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+            <span class="loading loading-spinner loading-lg text-primary"></span>
+            <h1 class="text-2xl font-bold mt-4">Loading movie details...</h1>
+        </div>
+    </div>
+</div>
+}
