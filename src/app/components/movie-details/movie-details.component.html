@@ -22,25 +22,29 @@
             <p class="text-base-content/80 my-4 leading-relaxed">{{ details.overview }}</p>
 
             <div class="flex flex-wrap justify-center lg:justify-start items-center gap-4 mb-6">
-                <div class="badge badge-primary badge-lg">
+                <div class="badge badge-lg bg-base-200 text-base-content border border-base-300 px-3">
                     {{ details.release_date | date:'yyyy' }}
                 </div>
 
                 @if (details.runtime) {
-                <div class="badge badge-secondary badge-lg">{{ details.runtime }} min</div>
+                <div class="badge badge-lg bg-base-200 text-base-content border border-base-300 px-3">
+                    {{ details.runtime }} min
+                </div>
                 }
 
+                <span class="badge badge-lg uppercase bg-base-200 text-base-content border border-base-300 px-3">
+                    {{ details.original_language }}
+                </span>
 
-                <span class="badge badge-secondary uppercase">{{ details.original_language }}</span>
-                <div class="badge badge-accent badge-lg">
+                <div class="badge badge-lg uppercase bg-base-200 text-base-content border border-base-300 px-3">
                     ★ 10/{{ details.vote_average.toFixed(1) }}
                 </div>
             </div>
 
-
             <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
                 @for (genre of details.genres; track genre.id) {
-                <span class="badge badge-outline badge-lg">{{ genre.name }}</span>
+                <span class="badge badge-lg bg-base-200 text-base-content border border-base-300 px-3">{{ genre.name
+                    }}</span>
                 }
             </div>
 

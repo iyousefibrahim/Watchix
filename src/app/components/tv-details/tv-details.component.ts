@@ -3,10 +3,14 @@ import { TVService } from '../../core/services/tv.service';
 import { TranslationService } from '../../core/services/translation.service';
 import { TVDetails } from '../../core/interfaces/responses/tv-details';
 import { imagePath } from '../../shared/utils/imagePath';
+import { CommonModule } from '@angular/common';
+import { WatchTrailerComponent } from "../watch-trailer/watch-trailer.component";
+import { ButtonComponent } from "../button/button.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tv-details',
-  imports: [],
+  imports: [CommonModule, WatchTrailerComponent, ButtonComponent, TranslateModule],
   templateUrl: './tv-details.component.html',
   styleUrl: './tv-details.component.css'
 })
@@ -16,6 +20,9 @@ export class TvDetailsComponent {
 
   Id = input.required<string | null>();
   tvDetails = signal<TVDetails | null>(null);
+  tvEpisodes = signal<TVDetails | null>(null);
+  // seasonNumber = signal<number>(0);
+
   imagePath = imagePath;
 
   ngOnInit(): void {
@@ -32,6 +39,8 @@ export class TvDetailsComponent {
       this._TVService.getTVDetails(Number(this.Id())).subscribe({
         next: (response) => {
           this.tvDetails.set(response);
+          console.log('TV Details:', response);
+
         },
         error: (error) => {
           console.error('Error fetching movie details:', error);
@@ -42,7 +51,7 @@ export class TvDetailsComponent {
 
   // private getTVEpisodes(): void {
   //   if (this.Id()) {
-  //     this._TVService.getEpisodeDetails().subscribe({
+  //     this._TVService.getEpisodeDetails(this.seasonNumber).subscribe({
   //       next: (response) => {
   //         // Handle the response for TV episodes if needed
   //       },
@@ -51,4 +60,6 @@ export class TvDetailsComponent {
   //       }
   //     });
   //   }
+  // }
+
 }

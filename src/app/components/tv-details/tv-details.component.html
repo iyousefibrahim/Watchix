@@ -1,0 +1,93 @@
+@if (tvDetails(); as details) {
+<!-- Hero Section with Backdrop -->
+<div class="hero min-h-screen bg-base-200"
+    [style.background-image]="'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(' + imagePath + details.backdrop_path + ')'">
+    <div class="hero-content flex-col lg:flex-row gap-8 p-8">
+        <!-- Poster -->
+        <div class="flex-shrink-0">
+            <div class="card bg-base-100 shadow-xl">
+                <figure>
+                    <img [src]="imagePath + details.poster_path" [alt]="details.name" class="w-80 h-auto rounded-lg" />
+                </figure>
+            </div>
+        </div>
+
+        <!-- Main Info -->
+        <div class="flex-1 text-white">
+            <h1 class="text-5xl font-bold mb-4">{{ details.name }}</h1>
+
+            @if (details.tagline) {
+            <p class="text-xl italic text-gray-300">
+                {{ details.tagline }}
+            </p>
+            }
+
+            <p class="text-base-content/80 my-4 leading-relaxed">
+                {{ details.overview }}
+            </p>
+
+            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-4 mb-6">
+                <div class="badge badge-lg bg-base-200 text-base-content border border-base-300 px-3">
+                    {{ details.first_air_date | date: 'yyyy' }}
+                </div>
+
+                <span class="badge badge-lg uppercase bg-base-200 text-base-content border border-base-300 px-3">
+                    {{ details.original_language }}
+                </span>
+
+                <div class="badge badge-lg bg-base-200 text-base-content border border-base-300 px-3">
+                    ★ 10/{{ details.vote_average.toFixed(1) }}
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
+                @for (genre of details.genres; track genre.id) {
+                <span class="badge badge-lg bg-base-200 text-base-content border border-base-300 px-3">{{ genre.name }}</span>
+                }
+            </div>
+
+            <app-watch-trailer [Id]="details.id" mediaType="tv"></app-watch-trailer>
+        </div>
+    </div>
+</div>
+
+<!-- Seasons Section -->
+<div class="py-8 text-base-content my-container">
+    <h2 class="text-3xl font-bold mb-4">
+        {{"TV_DETAILS.SEASONS" | translate}}
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        @for (season of details.seasons; track season.id) {
+        <div class="card bg-base-100 shadow-xl border border-base-300">
+            <figure>
+                <img [src]="imagePath + season.poster_path" [alt]="season.name" class="h-full w-full object-cover" />
+            </figure>
+            <div class="card-body text-base-content">
+                <h3 class="card-title">{{ season.name }}</h3>
+                <p class="text-sm">
+                    {{"TV_DETAILS.AIR_DATE" | translate}}: {{ season.air_date }}
+                </p>
+                <p class="text-sm">
+                    {{"TV_DETAILS.EPISODES_COUNT" | translate}}: {{ season.episode_count }}
+                </p>
+                <app-button title="TV_DETAILS.SHOW_EPISODE" textColorClass="text-black"></app-button>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+}
+
+@else {
+<!-- Loading State -->
+<div class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+            <span class="loading loading-spinner loading-lg text-primary"></span>
+            <h1 class="text-2xl font-bold mt-4">Loading TV details...</h1>
+        </div>
+    </div>
+</div>
+}

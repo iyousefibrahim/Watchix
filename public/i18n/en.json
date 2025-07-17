@@ -53,5 +53,14 @@
     "NOW_PLAYING_MOVIES": "Now Playing Movies",
     "NOW_PLAYING_TV": "Now Playing TV Shows",
     "AIRING_TODAY_TV_SHOWS": "Airing Today TV Shows"
+  },
+  "TV_DETAILS": {
+    "SEASONS": "Seasons",
+    "SHOW_EPISODE": "Show Episodes",
+    "EPISODES_COUNT": "Episodes Count",
+    "WATCH_TRAILER": "Watch Trailer",
+    "AIR_DATE": "Air Date",
+    "NO_SEASONS": "No seasons available for this TV show.",
+    "NO_EPISODES": "No episodes available for this season."
   }
 }

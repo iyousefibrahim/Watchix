@@ -52,5 +52,14 @@
     "RECOMMENDED_TV": "مسلسلات مقترحة",
     "NOW_PLAYING_MOVIES": "أفلام تُعرض الآن",
     "AIRING_TODAY_TV_SHOWS": "المسلسلات المعروضة اليوم"
+  },
+  "TV_DETAILS": {
+    "SEASONS": "المواسم",
+    "SHOW_EPISODE": "عرض الحلقات",
+    "EPISODES_COUNT": "عدد الحلقات",
+    "WATCH_TRAILER": "شاهد الإعلان",
+    "AIR_DATE": "تاريخ العرض",
+    "NO_SEASONS": "لا توجد مواسم متاحة لهذا المسلسل.",
+    "NO_EPISODES": "لا توجد حلقات متاحة لهذا الموسم."
   }
 }
