@@ -2,6 +2,14 @@
 <main>
     <app-media-section title="MEDIA_SECTIONS.TRENDING_MOVIES" mediaType="movie" [items]="trendingMovies()" />
     <app-media-section title="MEDIA_SECTIONS.TOP_RATED_MOVIES" mediaType="movie" [items]="topRatedMovies()" />
-    <app-media-section title="MEDIA_SECTIONS.NOW_PLAYING_MOVIES" mediaType="movie" [items]="nowPlayingMovies()" />
     <app-media-section title="MEDIA_SECTIONS.UPCOMING_MOVIES" mediaType="movie" [items]="upComingMovies()" />
+    <app-media-section #stopDefer title="MEDIA_SECTIONS.NOW_PLAYING_MOVIES" mediaType="movie" [items]="nowPlayingMovies()" />
+    @defer (on viewport (stopDefer)) {
+    <app-media-section title="MEDIA_SECTIONS.TRENDING_TV" mediaType="tv" [items]="trendingTvShows()" />
+    <app-media-section title="MEDIA_SECTIONS.TOP_RATED_TV" mediaType="tv" [items]="topRatedTvShows()" />
+    <app-media-section title="MEDIA_SECTIONS.POPULAR_TV" mediaType="tv" [items]="popularTvShows()" />
+    <app-media-section title="MEDIA_SECTIONS.AIRING_TODAY_TV_SHOWS" mediaType="tv" [items]="airingTodayTvShows()" />
+    }@placeholder {
+    <app-media-section title="" mediaType="tv" [items]="null" />
+    }
 </main>

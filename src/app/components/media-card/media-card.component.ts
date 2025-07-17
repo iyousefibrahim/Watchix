@@ -2,11 +2,11 @@ import { Component, input } from '@angular/core';
 import { AnyMediaItem } from '../../core/interfaces/any-media-item';
 import { imagePath } from '../../shared/utils/imagePath';
 import { RouterLink } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-media-card',
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, NgClass],
   templateUrl: './media-card.component.html',
   styleUrl: './media-card.component.css'
 })

@@ -5,7 +5,9 @@ export type AnyMediaItem = {
     overview: string;
     backdrop_path: string;
     poster_path: string;
-    release_date: string;
+    release_date?: string;
+    first_air_date?: string;
+    vote_average: number;
     genre_ids: number[];
     [key: string]: any;
 };
