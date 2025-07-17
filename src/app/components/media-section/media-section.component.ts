@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MediaCardComponent } from "../media-card/media-card.component";
 import { TranslateModule } from '@ngx-translate/core';
 import { AnyMediaItem } from '../../core/interfaces/any-media-item';
@@ -10,6 +10,8 @@ import { AnyMediaItem } from '../../core/interfaces/any-media-item';
   styleUrl: './media-section.component.css'
 })
 export class MediaSectionComponent {
-  title = input.required<string>();
-  @Input({ required: true }) items!: AnyMediaItem[] | null;
+  readonly title = input.required<string>();
+  readonly items = input.required<AnyMediaItem[] | null>();
+  readonly mediaType = input.required<'movie' | 'tv'>();
+
 }

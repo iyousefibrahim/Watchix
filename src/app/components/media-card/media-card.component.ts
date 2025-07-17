@@ -11,8 +11,10 @@ import { DatePipe } from '@angular/common';
   styleUrl: './media-card.component.css'
 })
 export class MediaCardComponent {
-  items = input.required<AnyMediaItem[] | null>();
-  imagePath = imagePath;
-  skeletonArray = Array(4);
+  readonly items = input.required<AnyMediaItem[] | null>();
+  readonly mediaType = input.required<'movie' | 'tv'>();
+
+  readonly imagePath = imagePath;
+  readonly skeletonArray = Array(4);
 
 }

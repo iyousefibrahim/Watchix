@@ -1,24 +1,24 @@
 <div class="flex flex-row flex-wrap justify-between gap-4">
-  @for (movie of items(); track movie.id) {
+  @for (item of items(); track item.id) {
   <div routerLink="" class="card xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md hover:shadow-lg transition-shadow duration-300">
 
     <figure class="rounded-t-lg overflow-hidden">
-      <img class="h-auto w-full  bg-contain" src="{{ imagePath + movie.poster_path }}"
-        alt="{{ movie.title || movie.name }}" />
+      <img class="h-auto w-full  bg-contain" src="{{ imagePath + item.poster_path }}"
+        alt="{{ item.title || item.name }}" />
     </figure>
 
     <div class="card-body p-4">
       <h2 class="card-title text-lg font-semibold truncate">
-        {{ movie.title || movie.name }}
+        {{ item.title || item.name }}
       </h2>
 
       <p class="text-sm text-gray-500 line-clamp-3">
-        {{ movie.overview }}
+        {{ item.overview }}
       </p>
 
       <div class="card-actions justify-between mt-2 text-sm text-gray-400">
         <span class="badge badge-outline">
-          {{ movie.release_date | date:'yyyy' }}
+          {{ item.release_date | date:'yyyy' }}
         </span>
       </div>
     </div>

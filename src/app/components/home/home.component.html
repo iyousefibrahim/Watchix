@@ -1,4 +1,7 @@
 <app-hero-section />
 <main>
-    <app-media-section title="MEDIA_SECTIONS.TRENDING_MOVIES" [items]="trendingMovies()" />
+    <app-media-section title="MEDIA_SECTIONS.TRENDING_MOVIES" mediaType="movie" [items]="trendingMovies()" />
+    <app-media-section title="MEDIA_SECTIONS.TOP_RATED_MOVIES" mediaType="movie" [items]="topRatedMovies()" />
+    <app-media-section title="MEDIA_SECTIONS.NOW_PLAYING_MOVIES" mediaType="movie" [items]="nowPlayingMovies()" />
+    <app-media-section title="MEDIA_SECTIONS.UPCOMING_MOVIES" mediaType="movie" [items]="upComingMovies()" />
 </main>

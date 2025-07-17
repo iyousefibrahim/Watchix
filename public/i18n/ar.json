@@ -49,6 +49,7 @@
     "LATEST_MOVIES": "أحدث الأفلام",
     "LATEST_TV": "أحدث المسلسلات",
     "RECOMMENDED_MOVIES": "أفلام مقترحة",
-    "RECOMMENDED_TV": "مسلسلات مقترحة"
+    "RECOMMENDED_TV": "مسلسلات مقترحة",
+    "NOW_PLAYING_MOVIES": "أفلام تُعرض الآن"
   }
 }

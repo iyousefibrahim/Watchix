@@ -49,6 +49,7 @@
     "LATEST_MOVIES": "Latest Movies",
     "LATEST_TV": "Latest TV Shows",
     "RECOMMENDED_MOVIES": "Recommended Movies",
-    "RECOMMENDED_TV": "Recommended TV Shows"
+    "RECOMMENDED_TV": "Recommended TV Shows",
+    "NOW_PLAYING_MOVIES": "Now Playing Movies"
   }
 }
