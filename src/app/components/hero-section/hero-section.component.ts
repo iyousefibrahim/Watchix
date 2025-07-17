@@ -21,11 +21,8 @@ export class HeroSectionComponent implements OnInit {
   imagePath = imagePath;
   randomMovie = signal<MovieListItem | null>(null);
   movieId = signal<number | null>(null);
-  trailerId! : number;
 
   ngOnInit(): void {
-    this.loadRandomMovie();
-
     this._TranslationService.languageChanged$
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
@@ -40,8 +37,7 @@ export class HeroSectionComponent implements OnInit {
         const index = Math.floor(Math.random() * movies.length);
         const selectedMovie = movies[index];
         this.randomMovie.set(selectedMovie);
-        this.movieId.set(selectedMovie.id);
-        this.trailerId = selectedMovie.id;
+        this.movieId.set(selectedMovie.id);        
       });
   }
 }
