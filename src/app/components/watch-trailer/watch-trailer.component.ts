@@ -1,8 +1,9 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { ButtonComponent } from "../button/button.component";
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MoviesService } from '../../core/services/movies.service';
 import { TVService } from '../../core/services/tv.service';
+import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   selector: 'app-watch-trailer',
@@ -10,10 +11,11 @@ import { TVService } from '../../core/services/tv.service';
   templateUrl: './watch-trailer.component.html',
   styleUrl: './watch-trailer.component.css'
 })
-export class WatchTrailerComponent {
+export class WatchTrailerComponent implements OnInit {
   private readonly _MoviesService = inject(MoviesService);
   private readonly _TVService = inject(TVService);
   private readonly _sanitizer = inject(DomSanitizer);
+  private readonly _TranslationService = inject(TranslationService);
 
   safeTrailerUrl = signal<SafeResourceUrl | null>(null);
   trailerisOpend = signal<boolean>(false);
@@ -24,6 +26,10 @@ export class WatchTrailerComponent {
 
 
   ngOnInit(): void {
+    this._TranslationService.languageChanged$.subscribe(() => {
+      this.loadTrailer(Number(this.Id()));
+    });
+
     this.loadTrailer(Number(this.Id()))
   }
 
@@ -68,5 +74,5 @@ export class WatchTrailerComponent {
     document.body.classList.add('overflow-hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  
+
 }
