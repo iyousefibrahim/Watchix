@@ -1,6 +1,7 @@
 <div class="flex flex-row flex-wrap justify-between gap-4">
   @for (item of items(); track item.id) {
-  <div [routerLink]="['/', mediaType(), item.id]" class="card cursor-pointer xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md hover:shadow-lg transition-shadow duration-300">
+  <div [routerLink]="['/', mediaType(), item.id]"
+    class="card cursor-pointer xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md hover:shadow-lg transition-shadow duration-300">
 
     <figure class="rounded-t-lg overflow-hidden">
       <img class="h-auto w-full  bg-contain" src="{{ imagePath + item.poster_path }}"
@@ -20,24 +21,22 @@
         <span class="badge badge-outline">
           {{ item.release_date ? (item.release_date | date: 'yyyy') : (item.first_air_date | date: 'yyyy') }}
         </span>
-        <span class="badge px-3 py-1 rounded-full font-semibold text-sm" 
-        [ngClass]="{
+        <span class="badge px-3 py-1 rounded-full font-semibold text-sm" [ngClass]="{
           'bg-green-500 text-black dark:text-white': item.vote_average >= 7,
           'bg-yellow-500 text-black': item.vote_average >= 5 && item.vote_average < 7,
           'bg-red-500 text-white': item.vote_average < 5
         }">
           ★ {{ item.vote_average.toFixed(1) }}
         </span>
-
       </div>
     </div>
 
   </div>
   }@empty {
-  <div class="flex flex-wrap flex-row justify-between gap-4">
+  <div class="flex flex-wrap justify-between gap-4">
     @for (item of skeletonArray; track $index) {
-    <div class="card xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md">
-      <div class="skeleton h-80 w-full rounded-t-lg"></div>
+    <div class="card cursor-pointer xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md">
+      <div class="skeleton h-[360px] w-full rounded-t-lg"></div>
       <div class="p-4 space-y-2">
         <div class="skeleton h-5 w-3/4"></div>
         <div class="skeleton h-4 w-full"></div>
