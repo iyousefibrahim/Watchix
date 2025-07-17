@@ -25,9 +25,9 @@
 
   </div>
   }@empty {
-  <div class="flex flex-wrap gap-4">
+  <div class="flex flex-wrap flex-row justify-between gap-4">
     @for (item of skeletonArray; track $index) {
-    <div class="card w-60 bg-base-200 shadow-md">
+    <div class="card xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md">
       <div class="skeleton h-80 w-full rounded-t-lg"></div>
       <div class="p-4 space-y-2">
         <div class="skeleton h-5 w-3/4"></div>
