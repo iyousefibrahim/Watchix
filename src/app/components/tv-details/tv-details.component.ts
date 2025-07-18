@@ -5,12 +5,12 @@ import { TVDetails } from '../../core/interfaces/responses/tv-details';
 import { imagePath } from '../../shared/utils/imagePath';
 import { CommonModule } from '@angular/common';
 import { WatchTrailerComponent } from "../watch-trailer/watch-trailer.component";
-import { ButtonComponent } from "../button/button.component";
 import { TranslateModule } from '@ngx-translate/core';
+import { TvSeasonCardComponent } from "../tv-season-card/tv-season-card.component";
 
 @Component({
   selector: 'app-tv-details',
-  imports: [CommonModule, WatchTrailerComponent, ButtonComponent, TranslateModule],
+  imports: [CommonModule, WatchTrailerComponent, TranslateModule, TvSeasonCardComponent],
   templateUrl: './tv-details.component.html',
   styleUrl: './tv-details.component.css'
 })
@@ -21,6 +21,7 @@ export class TvDetailsComponent {
   Id = input.required<string | null>();
   tvDetails = signal<TVDetails | null>(null);
   tvEpisodes = signal<TVDetails | null>(null);
+  seasons = signal<TVDetails['seasons'] | null>(null);
   // seasonNumber = signal<number>(0);
 
   imagePath = imagePath;

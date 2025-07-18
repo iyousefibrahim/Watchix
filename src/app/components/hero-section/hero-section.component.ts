@@ -18,7 +18,7 @@ export class HeroSectionComponent implements OnInit {
   private readonly _TranslationService = inject(TranslationService);
   private readonly _destroyRef = inject(DestroyRef);
 
-  imagePath = imagePath;
+  readonly imagePath = imagePath;
   randomMovie = signal<MovieListItem | null>(null);
   movieId = signal<number | null>(null);
 

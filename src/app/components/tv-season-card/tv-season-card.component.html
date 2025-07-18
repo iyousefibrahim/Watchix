@@ -1,0 +1,25 @@
+<div class="py-8 text-base-content my-container">
+    <h2 class="text-3xl font-bold mb-4">
+        {{"TV_DETAILS.SEASONS" | translate}}
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        @for (season of season(); track season.id) {
+        <div class="card bg-base-100 shadow-xl border border-base-300">
+            <figure>
+                <img [src]="imagePath + season.poster_path" [alt]="season.name" class="h-full w-full object-cover" />
+            </figure>
+            <div class="card-body text-base-content">
+                <h3 class="card-title">{{ season.name }}</h3>
+                <p class="text-sm">
+                    {{"TV_DETAILS.AIR_DATE" | translate}}: {{ season.air_date }}
+                </p>
+                <p class="text-sm">
+                    {{"TV_DETAILS.EPISODES_COUNT" | translate}}: {{ season.episode_count }}
+                </p>
+                <app-button title="TV_DETAILS.SHOW_EPISODE" textColorClass="text-black dark:text-white"></app-button>
+            </div>
+        </div>
+        }
+    </div>
+</div>

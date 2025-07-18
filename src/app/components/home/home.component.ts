@@ -38,8 +38,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.loadAll();
-
     this._TranslationService.languageChanged$
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(() => {
