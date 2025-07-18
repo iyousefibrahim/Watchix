@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
 import { WatchTrailerComponent } from "../watch-trailer/watch-trailer.component";
 import { TranslateModule } from '@ngx-translate/core';
 import { TvSeasonCardComponent } from "../tv-season-card/tv-season-card.component";
+import { CreditsCardComponent } from "../credits-card/credits-card.component";
 
 @Component({
   selector: 'app-tv-details',
-  imports: [CommonModule, WatchTrailerComponent, TranslateModule, TvSeasonCardComponent],
+  imports: [CommonModule, WatchTrailerComponent, TranslateModule, TvSeasonCardComponent, CreditsCardComponent],
   templateUrl: './tv-details.component.html',
   styleUrl: './tv-details.component.css'
 })

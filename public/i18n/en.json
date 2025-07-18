@@ -62,5 +62,6 @@
     "AIR_DATE": "Air Date",
     "NO_SEASONS": "No seasons available for this TV show.",
     "NO_EPISODES": "No episodes available for this season."
-  }
+  },
+  "CAST": "Cast"
 }

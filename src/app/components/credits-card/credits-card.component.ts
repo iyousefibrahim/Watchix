@@ -15,7 +15,7 @@ import { TranslationService } from '../../core/services/translation.service';
 })
 export class CreditsCardComponent {
   mediaType = input.required<'movie' | 'tv'>();
-  id = input.required<number>();
+  id = input.required<number | null>();
 
   private readonly _MovieService = inject(MoviesService);
   private readonly _TVService = inject(TVService);
