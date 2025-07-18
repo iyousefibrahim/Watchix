@@ -50,9 +50,14 @@
             <div class="flex justify-center lg:justify-start">
                 <app-watch-trailer [Id]="details.id" mediaType="movie"></app-watch-trailer>
             </div>
+
+
         </div>
     </div>
 </div>
+
+<app-credits [id]="details.id" mediaType="movie"></app-credits>
+
 
 } @else {
 <!-- Loading State -->

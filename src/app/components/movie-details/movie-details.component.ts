@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { imagePath } from '../../shared/utils/imagePath';
 import { WatchTrailerComponent } from "../watch-trailer/watch-trailer.component";
 import { TranslationService } from '../../core/services/translation.service';
+import { CreditsComponent } from "../credits/credits.component";
 
 @Component({
   selector: 'app-movie-details',
-  imports: [CommonModule, WatchTrailerComponent],
+  imports: [CommonModule, WatchTrailerComponent, CreditsComponent],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css'
 })
