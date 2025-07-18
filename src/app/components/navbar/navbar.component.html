@@ -1,5 +1,8 @@
-<div class="navbar bg-base-100 shadow-sm my-container">
-  <div class="navbar-start">
+<div class="navbar shadow-sm fixed top-0 left-0 right-0 z-30 my-container" [ngClass]="{
+    'bg-white': currentTheme() === 'nord',
+    'bg-base-200': currentTheme() === 'black'
+  }">
+    <div class="navbar-start">
         <!-- Logo -->
         <div routerLink="/home" class="flex cursor-pointer items-center gap-3">
             <img src="/Watchix.png" alt="Watchix Logo" class="w-8 h-8" />
@@ -25,18 +28,21 @@
         </div>
 
         <!-- Language dropdown - hidden on mobile -->
-        <div class="dropdown dropdown-end hidden md:block mr-2" [class.dropdown-open]="dropdownOpen">
+        <div class="dropdown dropdown-end hidden lg:block mr-2" [class.dropdown-open]="dropdownOpen()">
             <button class="btn btn-sm" (click)="toggleDropdown()">
                 {{ 'NAV.LANG.LABEL' | translate }}
             </button>
-            <ul class="dropdown-content menu bg-base-100 rounded-box w-52 mt-2 p-2 shadow z-[1]">
+            <ul [ngClass]="{
+    'bg-white': currentTheme() === 'nord',
+    'bg-base-200': currentTheme() === 'black'
+  }" class="dropdown-content menu text-base-content rounded-box w-52 mt-2 p-2 shadow-lg z-[1]">
                 <li><a (click)="selectLang('en')">{{ 'NAV.LANG.EN' | translate }}</a></li>
                 <li><a (click)="selectLang('ar')">{{ 'NAV.LANG.AR' | translate }}</a></li>
             </ul>
         </div>
 
         <!-- Theme toggle - hidden on mobile -->
-        <label class="swap swap-rotate hidden md:inline-grid mr-2">
+        <label class="swap swap-rotate hidden lg:inline-grid mr-2">
             <input type="checkbox" (change)="changeMode()" />
             <!-- sun icon -->
             <svg class="swap-off h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -68,43 +74,78 @@
                 </svg>
             </label>
 
-            <ul tabindex="0"
-                class="menu dropdown-content mt-3 z-[1] p-2 shadow-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-box w-52 border border-gray-200 dark:border-gray-600">
+            <ul [ngClass]="{
+    'bg-white text-black border-gray-200': currentTheme() === 'nord',
+    'bg-base-200 text-base-content border-gray-600': currentTheme() === 'black'
+  }" tabindex="0" class="menu dropdown-content mt-3 z-[1] p-2 shadow-lg rounded-box w-52 border">
                 <!-- Navigation Links -->
-                <li><a routerLink="/movies"
-                        class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white">{{ 'NAV.MOVIES' |
-                        translate }}</a></li>
-                <li><a routerLink="/tv"
-                        class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white">{{ 'NAV.TV' |
-                        translate }}</a></li>
-                <li><a routerLink="/recent"
-                        class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white">{{ 'NAV.RECENT' |
-                        translate }}</a></li>
+                <li>
+                    <a routerLink="/movies" [ngClass]="{
+        'hover:bg-gray-100 hover:text-white': currentTheme() === 'nord',
+        'hover:bg-gray-700 hover:text-white': currentTheme() === 'black'
+      }">
+                        {{ 'NAV.MOVIES' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/tv" [ngClass]="{
+                        'hover:bg-gray-100 hover:text-white': currentTheme() === 'nord',
+                        'hover:bg-gray-700 hover:text-white': currentTheme() === 'black'
+                    }">
+                        {{ 'NAV.TV' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/recent" [ngClass]="{
+                        'hover:bg-gray-100 hover:text-white': currentTheme() === 'nord',
+                        'hover:bg-gray-700 hover:text-white': currentTheme() === 'black'
+                    }">
+                        {{ 'NAV.RECENT' | translate }}
+                    </a>
+                </li>
 
                 <div class="divider my-2"></div>
 
                 <!-- Language selection -->
                 <li>
                     <details class="w-full">
-                        <summary class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white">{{
-                            'NAV.LANG.LABEL' | translate }}</summary>
-                        <ul
-                            class="p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-t-none shadow-inner border border-gray-200 dark:border-gray-600">
-                            <li><a (click)="selectLang('en')"
-                                    class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white">{{
-                                    'NAV.LANG.EN' | translate }}</a></li>
-                            <li><a (click)="selectLang('ar')"
-                                    class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white">{{
-                                    'NAV.LANG.AR' | translate }}</a></li>
+                        <summary [ngClass]="{
+                        'hover:bg-gray-100 hover:text-white': currentTheme() === 'nord',
+                        'hover:bg-gray-700 hover:text-white': currentTheme() === 'black'
+                        }">
+                            {{ 'NAV.LANG.LABEL' | translate }}
+                        </summary>
+                        <ul [ngClass]="{
+                            'bg-white text-black border-gray-200': currentTheme() === 'nord',
+                            'bg-base-200 text-base-content border-gray-600': currentTheme() === 'black'
+                            }" class="p-2 rounded-t-none shadow-inner border">
+                            <li>
+                                <a (click)="selectLang('en')" [ngClass]="{
+                                    'hover:bg-gray-100 hover:text-white': currentTheme() === 'nord',
+                                    'hover:bg-gray-700 hover:text-white': currentTheme() === 'black'
+                                    }">
+                                    {{ 'NAV.LANG.EN' | translate }}
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="selectLang('ar')" [ngClass]="{
+              'hover:bg-gray-100 hover:text-white': currentTheme() === 'nord',
+              'hover:bg-gray-700 hover:text-white': currentTheme() === 'black'
+            }">
+                                    {{ 'NAV.LANG.AR' | translate }}
+                                </a>
+                            </li>
                         </ul>
                     </details>
                 </li>
 
                 <!-- Theme toggle -->
                 <li>
-                    <label
-                        class="flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded justify-between">
-                        <span class="text-gray-900 dark:text-white">{{ 'NAV.THEME' | translate }}</span>
+                    <label class="flex items-center cursor-pointer p-2 rounded justify-between" [ngClass]="{
+        'hover:bg-gray-100 hover:text-white': currentTheme() === 'nord',
+        'hover:bg-gray-700 hover:text-white': currentTheme() === 'black'
+      }">
+                        <span>{{ 'NAV.THEME' | translate }}</span>
                         <input type="checkbox"
                             class="toggle toggle-sm bg-gray-300 border-gray-300 hover:bg-gray-400 checked:bg-blue-500 checked:border-blue-500 dark:bg-gray-600 dark:border-gray-600 dark:hover:bg-gray-500 dark:checked:bg-blue-400 dark:checked:border-blue-400"
                             (change)="changeMode()" />
@@ -116,7 +157,10 @@
 
     <!-- Mobile search modal -->
     <dialog id="mobile_search_modal" class="modal">
-        <div class="modal-box">
+        <div [ngClass]="{
+                'bg-white': currentTheme() === 'nord',
+                'bg-base-200': currentTheme() === 'black'
+            }" class="modal-box">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
