@@ -3,7 +3,16 @@
     "MOVIES": "الأفلام",
     "TV": "المسلسلات",
     "RECENT": "المضاف حديثًا",
-    "SEARCH": "ابحث...",
+    "SEARCH": {
+      "PLACEHOLDER": "ابحث...",
+      "NO_RESULTS": "لا توجد نتائج",
+      "SEARCHING": "جارٍ البحث...",
+      "MEDIA_TYPE": {
+        "Movie": "فيلم",
+        "TVShow": "مسلسل",
+        "Person": "شخص"
+      }
+    },
     "LANG": {
       "LABEL": "اللغة",
       "EN": "الإنجليزية",

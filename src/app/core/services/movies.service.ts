@@ -88,10 +88,4 @@ export class MoviesService {
     return this._HttpClient.get<MovieVideosResponse>(`${baseUrl}/movie/${movieId}/videos`);
   }
 
-  searchMovies(query: string, page: number = 1): Observable<SearchMoviesResponse> {
-    return this._HttpClient.get<SearchMoviesResponse>(`${baseUrl}/search/movie`, {
-      params: { query, page }
-    });
-  }
-
 }
