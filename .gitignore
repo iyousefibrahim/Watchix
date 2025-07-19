@@ -6,7 +6,13 @@
 /out-tsc
 /bazel-out
 
+.env
+
+# Generated environment file
+src/app/environment/environment.development.ts
+src/app/environment/environment.production.ts
 src/app/environment/apiKey.ts
+
 
 # Node
 /node_modules

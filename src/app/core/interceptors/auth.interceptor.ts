@@ -1,11 +1,11 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { apiKey } from '../../environment/apiKey';
+import { environment } from '../../environment/environment.development';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   const clonedRequest = req.clone({
     setHeaders: {
-      Authorization: `Bearer ${apiKey}`
+      Authorization: `Bearer ${environment.TMDB_API_KEY}`
     }
   });
 
