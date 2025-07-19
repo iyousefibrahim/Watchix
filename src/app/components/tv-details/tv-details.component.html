@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<app-tv-season-card [season]="tvDetails()?.seasons ?? null"></app-tv-season-card>
+<app-tv-season-card [season]="tvDetails()?.seasons ?? null" [tvId]="tvDetails()?.id ?? null"></app-tv-season-card>
 <div class="my-container">
     <app-credits-card [id]="tvDetails()?.id ?? null" mediaType="tv"></app-credits-card>
 </div>

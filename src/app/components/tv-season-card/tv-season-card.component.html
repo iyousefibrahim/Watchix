@@ -17,7 +17,10 @@
                 <p class="text-sm">
                     {{"TV_DETAILS.EPISODES_COUNT" | translate}}: {{ season.episode_count }}
                 </p>
-                <app-button title="TV_DETAILS.SHOW_EPISODE" textColorClass="text-black dark:text-white"></app-button>
+                <app-button [routerLink]="['/tv', tvId(), 'season', season.season_number]" title="TV_DETAILS.SHOW_EPISODE"
+                    textColorClass="text-black dark:text-white">
+                </app-button>
+
             </div>
         </div>
         }

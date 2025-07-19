@@ -63,5 +63,13 @@
     "NO_SEASONS": "No seasons available for this TV show.",
     "NO_EPISODES": "No episodes available for this season."
   },
-  "CAST": "Cast"
+  "CAST": "Cast",
+  "SEASON_EPISODES": {
+    "TITLE": "Episodes",
+    "EPISODE": "Episode",
+    "OVERVIEW": "Overview",
+    "AIR_DATE": "Air Date",
+    "NO_EPISODES": "No episodes available for this season.",
+    "BACK": "Back to Seasons"
+  }
 }

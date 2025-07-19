@@ -16,6 +16,6 @@ export class ButtonComponent {
   buttonPadding = input<string>('12px 24px');
   imageSrc = input<string>('');
   bgColor = input<string>('bg-red-700');
-  routerLink = input<string>(''); 
+  routerLink = input<string | any[]>(''); 
   disabledStatus = input<boolean>(false);
 }

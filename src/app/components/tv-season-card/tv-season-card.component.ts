@@ -13,5 +13,6 @@ import { ButtonComponent } from "../button/button.component";
 })
 export class TvSeasonCardComponent {
   readonly season = input.required<TVDetails['seasons'] | null>();
+  readonly tvId = input.required<string | number | null>();
   readonly imagePath = imagePath;
 }
