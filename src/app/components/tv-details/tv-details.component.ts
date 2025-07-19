@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, OnDestroy, OnInit, signal } from '@angular/core';
 import { TVService } from '../../core/services/tv.service';
 import { TranslationService } from '../../core/services/translation.service';
 import { TVDetails } from '../../core/interfaces/responses/tv-details';
@@ -8,6 +8,7 @@ import { WatchTrailerComponent } from "../watch-trailer/watch-trailer.component"
 import { TranslateModule } from '@ngx-translate/core';
 import { TvSeasonCardComponent } from "../tv-season-card/tv-season-card.component";
 import { CreditsCardComponent } from "../credits-card/credits-card.component";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tv-details',
@@ -15,9 +16,10 @@ import { CreditsCardComponent } from "../credits-card/credits-card.component";
   templateUrl: './tv-details.component.html',
   styleUrl: './tv-details.component.css'
 })
-export class TvDetailsComponent {
+export class TvDetailsComponent implements OnInit, OnDestroy {
   private readonly _TVService = inject(TVService);
   private readonly _TranslationService = inject(TranslationService);
+  private readonly _Title = inject(Title);
 
   Id = input.required<string | null>();
   tvDetails = signal<TVDetails | null>(null);
@@ -35,13 +37,17 @@ export class TvDetailsComponent {
       }
     });
   }
+  
+  ngOnDestroy(): void {
+    this._Title.setTitle('Watchix');
+  }
 
   private getTVDetails(): void {
     if (this.Id()) {
       this._TVService.getTVDetails(Number(this.Id())).subscribe({
         next: (response) => {
           this.tvDetails.set(response);
-          console.log('TV Details:', response);
+          this._Title.setTitle(this.tvDetails()?.name ?? '');
 
         },
         error: (error) => {
