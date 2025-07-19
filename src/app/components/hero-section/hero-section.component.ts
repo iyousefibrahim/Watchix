@@ -37,6 +37,12 @@ export class HeroSectionComponent implements OnInit {
         const index = Math.floor(Math.random() * movies.length);
         const selectedMovie = movies[index];
         this.randomMovie.set(selectedMovie);
-        this.movieId.set(selectedMovie.id);        
+        this.movieId.set(selectedMovie.id);
       });
-  }}
+  }
+
+  shortOverview(text: string, maxWords: number = 25): string {
+    const words = text.split(' ');
+    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + '...' : text;
+  }
+}

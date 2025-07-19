@@ -1,6 +1,5 @@
 @if (randomMovie(); as movie) {
 <header class="relative h-screen text-white">
-    <!-- Background Image with WebP support and optimized loading -->
     <picture class="absolute inset-0 w-full h-full z-0">
         <source [srcset]="'https://image.tmdb.org/t/p/w1280' + movie.backdrop_path + '.webp'" type="image/webp">
         <img [src]="'https://image.tmdb.org/t/p/w780' + movie.backdrop_path" [alt]="movie.title"
@@ -19,13 +18,15 @@
             </h1>
 
             @if (movie.overview) {
-            <p class="max-w-xl leading-relaxed">{{ movie.overview }}</p>
+            <p class="max-w-xl leading-relaxed">
+                {{ shortOverview(movie.overview) }}
+            </p>
+
             }
 
             <div class="flex flex-wrap items-center gap-4 text-sm text-gray-300">
                 @if (movie.release_date) {
                 <span class="flex items-center gap-1">
-                    <!-- Inline SVG for better performance -->
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                         <path fill-rule="evenodd"
                             d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
@@ -57,7 +58,7 @@
     </div>
 </header>
 } @else {
-<!-- Optimized loading state -->
+<!-- Loading -->
 <header class="relative h-screen text-white">
     <!-- Skeleton Background -->
     <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 z-0">
