@@ -24,30 +24,32 @@ export class CreditsCardComponent {
   cast = signal<(MovieCredits['cast'] | TVCreditsResponse['cast'])>([]);
   imagePath = imagePath;
 
-  constructor() {
-    effect(() => {
-      this.fetchCredits()
-    });
-
-    this._TranslationService.languageChanged$.subscribe(() => {
-      this.fetchCredits();
-    });
-  }
-
-  private fetchCredits() {
+  ngOnInit(): void {
     const type = this.mediaType();
     const itemId = this.id();
 
-    if (!type || !itemId) return;
-
-    if (type === 'movie') {
-      this._MovieService.getMovieCredits(itemId).subscribe((res) => {
-        this.cast.set(res.cast.slice(0, 12));
-      });
-    } else {
-      this._TVService.getTVCredits(itemId).subscribe((res) => {
-        this.cast.set(res.cast.slice(0, 12));
-      });
+    if (type && itemId) {
+      this.fetchCredits(type, itemId);
     }
+
+    this._TranslationService.languageChanged$.subscribe(() => {
+      const type = this.mediaType();
+      const itemId = this.id();
+
+      if (type && itemId) {
+        this.fetchCredits(type, itemId);
+      }
+    });
+  }
+
+  private fetchCredits(type: 'movie' | 'tv', itemId: number) {
+    const serviceCall =
+      type === 'movie'
+        ? this._MovieService.getMovieCredits(itemId)
+        : this._TVService.getTVCredits(itemId);
+
+    serviceCall.subscribe((res) => {
+      this.cast.set(res.cast.slice(0, 12));
+    });
   }
 }
