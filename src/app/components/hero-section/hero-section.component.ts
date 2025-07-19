@@ -39,5 +39,4 @@ export class HeroSectionComponent implements OnInit {
         this.randomMovie.set(selectedMovie);
         this.movieId.set(selectedMovie.id);        
       });
-  }
-}
+  }}
