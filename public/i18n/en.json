@@ -13,9 +13,9 @@
       "NO_RESULTS": "No results found",
       "SEARCHING": "Searching...",
       "MEDIA_TYPE": {
-        "Movie": "Movie",
-        "TVShow": "TV Show",
-        "Person": "Person"
+        "MOVIE": "Movie",
+        "TV_SHOW": "TV Show",
+        "PERSON": "Person"
       }
     },
     "THEME": "Theme"

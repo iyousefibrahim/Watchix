@@ -8,9 +8,9 @@
       "NO_RESULTS": "لا توجد نتائج",
       "SEARCHING": "جارٍ البحث...",
       "MEDIA_TYPE": {
-        "Movie": "فيلم",
-        "TVShow": "مسلسل",
-        "Person": "شخص"
+        "MOVIE": "فيلم",
+        "TV_SHOW": "مسلسل",
+        "PERSON": "شخص"
       }
     },
     "LANG": {
