@@ -19,6 +19,7 @@ import { MultiSearchResult } from '../../core/interfaces/responses/search-multi-
 export class NavbarComponent implements OnInit, OnDestroy {
   @ViewChild('desktopSearchInput') desktopSearchInput!: ElementRef<HTMLInputElement>;
   @ViewChild('mobileSearchInput') mobileSearchInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('dropdownButton') dropdownButtonRef!: ElementRef;
 
   private destroy$ = new Subject<void>();
   private searchSubject = new Subject<string>();
@@ -54,11 +55,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.currentTheme.set(themeToUse);
 
     this.setupSearchDebounce();
+    document.addEventListener('click', this.handleDocumentClick);
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    document.removeEventListener('click', this.handleDocumentClick);
   }
 
   private setupSearchDebounce(): void {
@@ -121,7 +124,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   selectSearchResult(result: MultiSearchResult): void {
     console.log(result);
-    
+
     this.clearSearch();
     this.closeMobileSearch();
     if (!result?.media_type || !result?.id) return;
@@ -197,4 +200,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.currentTheme.set(newTheme as 'nord' | 'black');
     localStorage.setItem('theme', newTheme);
   }
+
+  handleDocumentClick = (event: MouseEvent) => {
+    const dropdownEl = this.dropdownButtonRef?.nativeElement;
+    const clickedInside = dropdownEl?.contains(event.target as Node);
+
+    if (!clickedInside && this.dropdownOpen()) {
+      this.dropdownOpen.set(false);
+    }
+  };
+
 }
