@@ -18,7 +18,6 @@
         <ul class="menu menu-horizontal px-1 gap-2">
             <li><a class="btn btn-ghost text-sm" routerLink="/movies">{{ 'NAV.MOVIES' | translate }}</a></li>
             <li><a class="btn btn-ghost text-sm" routerLink="/tv">{{ 'NAV.TV' | translate }}</a></li>
-            <li><a class="btn btn-ghost text-sm" routerLink="/recent">{{ 'NAV.RECENT' | translate }}</a></li>
         </ul>
     </div>
 
@@ -236,19 +235,7 @@
                         {{ 'NAV.TV' | translate }}
                     </a>
                 </li>
-                <li>
-                    <a routerLink="/recent" [ngClass]="{
-                        'hover:bg-gray-100': currentTheme() === 'nord',
-                        'hover:bg-gray-700': currentTheme() === 'black'
-                    }">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {{ 'NAV.RECENT' | translate }}
-                    </a>
-                </li>
+                
 
                 <div class="divider my-2"></div>
 

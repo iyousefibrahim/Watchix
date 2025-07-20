@@ -1,0 +1,10 @@
+<div class="my-28">
+    <app-media-section title="{{'MEDIA_SECTIONS.ALL_MOVIES'}}" [items]="movies()" mediaType="movie" />
+
+    <app-pagination 
+        [currentPage]="currentPage()" 
+        [totalPages]="totalPages()"
+        (pageChange)="changePage($event)">
+    </app-pagination>
+
+</div>

@@ -60,7 +60,9 @@
     "RECOMMENDED_MOVIES": "أفلام مقترحة",
     "RECOMMENDED_TV": "مسلسلات مقترحة",
     "NOW_PLAYING_MOVIES": "أفلام تُعرض الآن",
-    "AIRING_TODAY_TV_SHOWS": "المسلسلات المعروضة اليوم"
+    "AIRING_TODAY_TV_SHOWS": "المسلسلات المعروضة اليوم",
+    "ALL_MOVIES": "جميع الأفلام",
+    "ALL_TV_SHOWS": "جميع المسلسلات"
   },
   "TV_DETAILS": {
     "SEASONS": "المواسم",
@@ -79,5 +81,9 @@
     "AIR_DATE": "تاريخ العرض",
     "NO_EPISODES": "لا توجد حلقات متاحة لهذا الموسم.",
     "BACK": "العودة للمواسم"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي"
   }
 }

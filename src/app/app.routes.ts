@@ -11,6 +11,8 @@ export const routes: Routes = [
             { path: 'home', loadComponent: () => import('./components/home/home.component').then(h => h.HomeComponent) },
             { matcher: mediaDetailsMatcher, loadComponent: () => import('./components/media-details/media-details.component').then(md => md.MediaDetailsComponent) },
             { path: 'tv/:id/season/:seasonNumber', loadComponent: () => import('./components/season-episodes/season-episodes.component').then(se => se.SeasonEpisodesComponent) },
+            { path: 'movies', loadComponent: () => import('./components/all-movies/all-movies.component').then(m => m.AllMoviesComponent) },
+            { path: 'tv', loadComponent: () => import('./components/all-tv/all-tv.component').then(tv => tv.AllTvComponent) },
         ]
     },
     {

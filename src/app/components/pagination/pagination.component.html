@@ -1,0 +1,15 @@
+<div class="flex justify-center gap-2 mt-8">
+    <button class="btn btn-sm" (click)="prevPage()" [disabled]="currentPage() === 1">
+        ◀ {{ 'pagination.previous' | translate }}
+    </button>
+
+    @for (page of pagesArray(); track page) {
+    <button class="btn btn-sm" [class.btn-primary]="page === currentPage()" (click)="goToPage(page)">
+        {{ page }}
+    </button>
+    }
+
+    <button class="btn btn-sm" (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+        {{ 'pagination.next' | translate }} ▶
+    </button>
+</div>
