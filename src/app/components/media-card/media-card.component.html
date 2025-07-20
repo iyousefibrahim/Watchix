@@ -2,7 +2,7 @@
   @if (items()) {
   @for (item of items(); track item.id) {
   <div [routerLink]="['/', mediaType(), item.id]"
-    class="card cursor-pointer xl:w-[24%] md:w-[40%] w-full bg-base-200 shadow-md hover:shadow-lg transition-shadow duration-300">
+    class="card cursor-pointer xl:w-[23%] md:w-[48%] w-full bg-base-200 shadow-md hover:shadow-lg transition-shadow duration-300">
     <figure class="aspect-[2/3] bg-gray-800 overflow-hidden rounded-t-lg">
       @if (item.poster_path) {
       <img class="h-full w-full object-cover" [src]="imagePath + item.poster_path" [alt]="item.title || item.name"
@@ -44,7 +44,7 @@
   } @else {
   @for (item of skeletonArray; track $index) {
   <div
-    class="card cursor-pointer xl:w-[24%] md:w-[40%] w-full min-w-[220px] bg-base-200 shadow-md rounded-lg overflow-hidden">
+    class="card cursor-pointer xl:w-[23%] md:w-[48%] w-full min-w-[220px] bg-base-200 shadow-md rounded-lg overflow-hidden">
     <div class="skeleton w-full aspect-[2/3]"></div>
 
     <div class="card-body p-4 space-y-3">
